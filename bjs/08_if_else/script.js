@@ -156,28 +156,28 @@ if ((chislo % 100 <= 100) && (chislo % 100 >= 20)) {
     };
     switch (shareArr[shareArr.length-2]) {
         case 2:
-      secondRazr = "двадцать";
+      secondRazr = "двадцать ";
       break;
     case 3:
-      secondRazr = "тридцать";
+      secondRazr = "тридцать ";
       break;
     case 4:
-      secondRazr = "сорок";
+      secondRazr = "сорок ";
       break;
     case 5:
-      secondRazr = "пятьдесят";
+      secondRazr = "пятьдесят ";
       break;
     case 6:
-      secondRazr = "шестьдесят";
+      secondRazr = "шестьдесят ";
       break;
     case 7:
-      secondRazr = "семьдесят";
+      secondRazr = "семьдесят ";
       break;
     case 8:
-      secondRazr = "восемьдесят";
+      secondRazr = "восемьдесят ";
       break;
     case 9:
-      secondRazr = "девяносто";
+      secondRazr = "девяносто ";
       break;
 
 
@@ -257,28 +257,28 @@ if ((chislo % 1000 < 1000) && (chislo % 1000 >= 100)) {
   };} else if ((shareArr[shareArr.length-2])>=2) {
     switch (shareArr[shareArr.length-2]) {
     case 2:
-      secondRazr = "двадцать";
+      secondRazr = "двадцать ";
       break;
     case 3:
-      secondRazr = "тридцать";
+      secondRazr = "тридцать ";
       break;
     case 4:
-      secondRazr = "сорок";
+      secondRazr = "сорок ";
       break;
     case 5:
-      secondRazr = "пятьдесят";
+      secondRazr = "пятьдесят ";
       break;
     case 6:
-      secondRazr = "шестьдесят";
+      secondRazr = "шестьдесят ";
       break;
     case 7:
-      secondRazr = "семьдесят";
+      secondRazr = "семьдесят ";
       break;
     case 8:
-      secondRazr = "восемьдесят";
+      secondRazr = "восемьдесят ";
       break;
     case 9:
-      secondRazr = "девяносто";
+      secondRazr = "девяносто ";
       break;
 
 
@@ -291,31 +291,31 @@ if ((chislo % 1000 < 1000) && (chislo % 1000 >= 100)) {
     switch (shareArr[shareArr.length-3]) 
       {
       case 1:
-      thirdRazr = "сто";
+      thirdRazr = "сто ";
       break;
       case 2:
-      thirdRazr = "двести";
+      thirdRazr = "двести ";
       break;
           case 3:
-      thirdRazr = "триста";
+      thirdRazr = "триста ";
       break;
           case 4:
-      thirdRazr = "четыреста";
+      thirdRazr = "четыреста ";
       break;
           case 4:
-      thirdRazr = "пятьсот";
+      thirdRazr = "пятьсот ";
       break;
           case 6:
-      thirdRazr = "шестьсот";
+      thirdRazr = "шестьсот ";
       break;
           case 7:
-      thirdRazr = "семьсот";
+      thirdRazr = "семьсот ";
       break;
           case 8:
-      thirdRazr = "восемьсот";
+      thirdRazr = "восемьсот ";
       break;
           case 9:
-      thirdRazr = "девятьсот";
+      thirdRazr = "девятьсот ";
       break;
           
       };
