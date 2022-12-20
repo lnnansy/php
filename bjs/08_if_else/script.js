@@ -1,34 +1,3 @@
-let minValue = parseInt(prompt('Минимальное знание числа для игры','0')); 
-    (minValue <-999) ?
-    minValue = -999 :
-    (minValue > 999) ?
-    minValue = 999 :
-    minValue;
-    
-
-let maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
-    (maxValue < -999) ? 
-    maxValue = -999 : 
-    (maxValue > 999) ? 
-    maxValue = 999 :
-    maxValue; 
-    if (isNaN(maxValue) || isNaN(minValue)) {
-      minValue = 0;
-      maxValue = 100;  
-      };
-
-alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
-let answerNumber  = Math.floor((minValue + maxValue) / 2);
-let orderNumber = 1;
-let gameRun = true;
-
-const orderNumberField = document.getElementById('orderNumberField');
-const answerField = document.getElementById('answerField');
-
-orderNumberField.innerText = orderNumber;
-answerField.innerText = `Вы загадали число ${answerNumber }?`;
-
-
 let firstRazr = "";
 let secondRazr = "";
 let thirdRazr = "";
@@ -335,7 +304,35 @@ return totalWord;
 }
 
 
-  
+let minValue = parseInt(prompt('Минимальное знание числа для игры','0')); 
+    (minValue <-999) ?
+    minValue = -999 :
+    (minValue > 999) ?
+    minValue = 999 :
+    minValue;
+    
+
+let maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
+    (maxValue < -999) ? 
+    maxValue = -999 : 
+    (maxValue > 999) ? 
+    maxValue = 999 :
+    maxValue; 
+    if (isNaN(maxValue) || isNaN(minValue)) {
+      minValue = 0;
+      maxValue = 100;  
+      };
+
+alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
+let answerNumber  = Math.floor((minValue + maxValue) / 2);
+let orderNumber = 1;
+let gameRun = true;
+
+const orderNumberField = document.getElementById('orderNumberField');
+const answerField = document.getElementById('answerField');
+perevod(answerNumber);
+orderNumberField.innerText = orderNumber;
+answerField.innerText = `Вы загадали число ${totalWord }?`;  
 const startGame = () => {
   alert("Игра начинается");
   minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
