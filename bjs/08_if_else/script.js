@@ -3,7 +3,7 @@ let secondRazr = "";
 let thirdRazr = "";
 let totalWord = 0;  
 let indicator = false;
- 
+const diapazon = document.getElementById('diapazon');
 
 const perevod = (answerNumber) => {
   console.log(answerNumber);
@@ -189,11 +189,8 @@ if ((chislo % 1000 < 1000) && (chislo % 1000 >= 100)) {
     };
 
 
-  if ((shareArr[shareArr.length-2])<2) {
+  if ((shareArr[shareArr.length-2])<=2) {
     switch (shareArr[shareArr.length-1]) {
-    case 0:
-      firstRazr = "десять";
-      break;
     case 1:
       firstRazr = "одиннадцать";
       break;
@@ -223,8 +220,12 @@ if ((chislo % 1000 < 1000) && (chislo % 1000 >= 100)) {
       break;
   
     default:
-  };} else if ((shareArr[shareArr.length-2])>=2) {
+  };} else if ((shareArr[shareArr.length-2])>2) {
     switch (shareArr[shareArr.length-2]) {
+    case 1:
+      secondRazr = "десять ";
+      break;
+     
     case 2:
       secondRazr = "двадцать ";
       break;
@@ -271,7 +272,7 @@ if ((chislo % 1000 < 1000) && (chislo % 1000 >= 100)) {
           case 4:
       thirdRazr = "четыреста ";
       break;
-          case 4:
+          case 5:
       thirdRazr = "пятьсот ";
       break;
           case 6:
@@ -304,15 +305,44 @@ return totalWord;
 }
 
 
-let minValue = parseInt(prompt('Минимальное знание числа для игры','0')); 
+
+const btn = document.querySelector('#btnRetry2');
+
+let answerNumber=1;
+let orderNumber = 1;
+let gameRun = false;
+let questRandom = 0;
+let questPhrase = "";
+const orderNumberField = document.getElementById('orderNumberField');
+const answerField = document.getElementById('answerField');
+let minValue= document.querySelector("#inp-min").value;
+    
+    let maxValue= document.querySelector("#inp-max").value;
+    const startGame = () => {
+      
+    
+    
+    answerNumber  = Math.floor((minValue + maxValue) / 2);
+    
+    perevod(answerNumber);
+    orderNumberField.innerText = orderNumber;
+    answerField.innerText = `Игра начинается. Вы загадали число ${totalWord }?`;
+    
+    
+    }
+    
+btn.addEventListener('click', 
+  function() {
+    event.preventDefault();
+    minValue= +document.querySelector("#inp-min").value;
+    console.log(minValue); 
+    maxValue= +document.querySelector("#inp-max").value;
+    console.log(maxValue);
     (minValue <-999) ?
     minValue = -999 :
     (minValue > 999) ?
     minValue = 999 :
     minValue;
-    
-
-let maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
     (maxValue < -999) ? 
     maxValue = -999 : 
     (maxValue > 999) ? 
@@ -322,142 +352,127 @@ let maxValue = parseInt(prompt('Максимальное знание числа
       minValue = 0;
       maxValue = 100;  
       };
-
-alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
-let answerNumber  = Math.floor((minValue + maxValue) / 2);
-let orderNumber = 1;
-let gameRun = true;
-
-const orderNumberField = document.getElementById('orderNumberField');
-const answerField = document.getElementById('answerField');
-perevod(answerNumber);
-orderNumberField.innerText = orderNumber;
-answerField.innerText = `Вы загадали число ${totalWord }?`;  
-const startGame = () => {
-  alert("Игра начинается");
-  minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
-  (minValue <-999) ?
-  minValue = -999 :
-  (minValue > 999) ?
-  minValue = 999 :
-  (isNaN(minValue)) ?
-  minValue = 0:
-  minValue;
-  maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
-  (maxValue < -999) ? 
-  maxValue = -999 : 
-  (maxValue > 999) ? 
-  maxValue = 999 : 
-  (isNaN(maxValue)) ?
-  maxValue = 100 : 
-  maxValue;
-  alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
-  answerNumber  = Math.floor((minValue + maxValue) / 2);
-  perevod(answerNumber);
-  answerField.innerText = `Игра начинается. Вы загадали число ${totalWord }?`;
-  
-}
-
-  
-
-document.getElementById('btnRetry').addEventListener('click', function () {
-    gameRun = false;
+    if (maxValue < minValue) {
+        let per = maxValue;
+        maxValue = minValue;
+        minValue = per;
+      };
+     
+    
+      
+        gameRun = false;
     orderNumber = 1;
     orderNumberField.innerText = orderNumber;
     answerField.innerText = "Игра начинается";
     console.log('zanovo');
-    
+    console.log(minValue);
+    diapazon.innerText = `Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`;
     
     if (!gameRun) {
-      setTimeout(() => { startGame(); }, 1000);
+      setTimeout(() => { startGame(); }, 2000);
       
     gameRun = true;};
+    
+})
 
-});
-        let questRandom = 0;
-        let questPhrase = "";
+
 document.getElementById('btnOver').addEventListener('click', function () {
-    if (gameRun){
-        
-        questRandom = Math.round(Math.random() * 3);
-        if (minValue === maxValue){
-            const phraseRandom = Math.round( Math.random());
-            const answerPhrase = (phraseRandom === 1) ?
-                `Вы загадали неправильное число!\n\u{1F914}` :
-                `Я сдаюсь..\n\u{1F92F}`;
+  if (gameRun){
+    console.log(minValue); 
+    
+    console.log(maxValue);
+      questRandom = Math.round(Math.random() * 3);
+      if (minValue === maxValue){
+          const phraseRandom = Math.round( Math.random());
+          const answerPhrase = (phraseRandom === 1) ?
+              `Вы загадали неправильное число!\n\u{1F914}` :
+              `Я сдаюсь..\n\u{1F92F}`;
 
-            answerField.innerText = answerPhrase;
-            gameRun = false;
-        } else {
-            minValue = answerNumber  + 1;
-            answerNumber  = Math.floor((minValue + maxValue) / 2);
-            orderNumber++;
-            orderNumberField.innerText = orderNumber;
-            
-            perevod(answerNumber);
-            if (questRandom === 1) { 
-                
-                questPhrase = `Вы загадали число ${totalWord }?`; 
-            console.log(totalWord);}
-                else if (questRandom === 2) {
-                    
-                questPhrase = `Наверное, это число ${totalWord }?`;
-                console.log(totalWord);}
-                else {
-                    
-                questPhrase = `Да это легко! Ты загадал ${totalWord }?`;
-                console.log(totalWord);};
+          answerField.innerText = answerPhrase;
+          gameRun = false;
+      } else {
+          minValue = answerNumber  + 1;
+          answerNumber  = Math.floor((minValue + maxValue) / 2);
+          orderNumber++;
+          orderNumberField.innerText = orderNumber;
+          
+          perevod(answerNumber);
+          if (questRandom === 1) { 
+              
+              questPhrase = `Вы загадали число ${totalWord }?`; 
+          }
+              else if (questRandom === 2) {
+                  
+              questPhrase = `Наверное, это число ${totalWord }?`;}
+              
+              else {
+                  
+              questPhrase = `Да это легко! Ты загадал ${totalWord }?`;}
+              
 
-
-            answerField.innerText = questPhrase;
-        } 
-    }
+              
+          answerField.innerText = questPhrase;
+      } 
+  }
 })
 
 document.getElementById('btnLess').addEventListener('click', function () {
-    if (gameRun){
-        questRandom = Math.round(Math.random() * 3);
-        if (minValue === maxValue){
-            const phraseRandom = Math.round( Math.random());
-            const answerPhrase = (phraseRandom === 1) ?
-                `Вы загадали неправильное число!\n\u{1F914}` :
-                `Я сдаюсь..\n\u{1F92F}`;
+  if (gameRun){
+      questRandom = Math.round(Math.random() * 3);
+      if (minValue >= maxValue){
+          const phraseRandom = Math.round( Math.random());
+          const answerPhrase = (phraseRandom === 1) ?
+              `Вы загадали неправильное число!\n\u{1F914}` :
+              `Я сдаюсь..\n\u{1F92F}`;
 
-            answerField.innerText = answerPhrase;
-            gameRun = false;
-        } else {
-
-            maxValue = answerNumber  - 1;
-            answerNumber  = Math.floor((minValue + maxValue) / 2);
-            orderNumber++;
-            orderNumberField.innerText = orderNumber;
-            perevod(answerNumber);
-            if (questRandom === 1) { 
-                questPhrase = `Вы загадали число ${totalWord }?`; }
-                else if (questRandom === 2) {
-                questPhrase = `Наверное, это число ${totalWord }?`; }
-                else {
-                questPhrase = `Да это легко! Ты загадал ${totalWord }?`;};
-    
-    
-                answerField.innerText = questPhrase;
-            
-        }
-    }
+          answerField.innerText = answerPhrase;
+          gameRun = false;
+      } else {
+          
+          maxValue = answerNumber  - 1;
+          answerNumber  = Math.floor((minValue + maxValue+1) / 2);
+          orderNumber++;
+          orderNumberField.innerText = orderNumber;
+          perevod(answerNumber);
+           if (questRandom === 1) { 
+              questPhrase = `Вы загадали число ${totalWord }?`; }
+              else if (questRandom === 2) {
+              questPhrase = `Наверное, это число ${totalWord }?`; }
+              else {
+              questPhrase = `Да это легко! Ты загадал ${totalWord }?`;};
+  
+  
+              answerField.innerText = questPhrase;
+               
+      }
+  }
 })
 
 document.getElementById('btnEqual').addEventListener('click', function () {
-    if (gameRun){
-        const phraseEndRandom = Math.round(Math.random() * 3);
-        const answerEndPhrase = (phraseEndRandom === 1) ? 
-        `Я всегда угадываю\n\u{1F60E}` :
-        (phraseEndRandom === 2) ? 
-        `Я угадал правильно\n\u{1F60E}` :     
-        `Я попал в точку\n\u{1F60E}`  
-        answerField.innerText = answerEndPhrase;
-        gameRun = false;
-    }
+  if (gameRun){
+      const phraseEndRandom = Math.round(Math.random() * 3);
+      const answerEndPhrase = (phraseEndRandom === 1) ? 
+      `Я всегда угадываю\n\u{1F60E}` :
+      (phraseEndRandom === 2) ? 
+      `Я угадал правильно\n\u{1F60E}` :     
+      `Я попал в точку\n\u{1F60E}`  
+      answerField.innerText = answerEndPhrase;
+      gameRun = false;
+  }
 })
+
+
+
+
+
+
+  
+
+
+        
+
+
+
 
 
 
