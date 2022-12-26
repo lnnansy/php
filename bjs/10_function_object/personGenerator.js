@@ -181,7 +181,7 @@ const personGenerator = {
     },
 
     randomBirth: function() {
-        let birth = this.randomIntNumber(1965,2000);
+        let birth = this.randomIntNumber(1975,2000);
         return birth;
      },
 
@@ -191,22 +191,22 @@ const personGenerator = {
         let dataChisloCount = 1;
         
         if ((dataChislo == "февраля") && (this.birth % 4) == 0) {
-            dataChisloCount = this.randomIntNumber(1,29);
+            dataChisloCount = this.randomIntNumber(0,29);
             return (dataChisloCount+" "+dataChislo);
         }  else if ((dataChislo == "февраля") && (this.birth % 4) !== 0) {
-            dataChisloCount = this.randomIntNumber(1,28);
+            dataChisloCount = this.randomIntNumber(0,28);
             return (dataChisloCount+" "+dataChislo);
         }           
         else if ((dataChislo == "января") || (dataChislo == "марта") || (dataChislo == "мая") || (dataChislo == "июня") || (dataChislo == "августа") || (dataChislo == "октября") || (dataChislo == "декабря")) 
         {
             
-            dataChisloCount = this.randomIntNumber(1,31);
+            dataChisloCount = this.randomIntNumber(0,31);
            
-            //let dataChislo = this.randomValue(1,31);
+            
             return (dataChisloCount+" "+dataChislo);
         } else 
         {
-            dataChisloCount = this.randomIntNumber(1,30);
+            dataChisloCount = this.randomIntNumber(0,30);
             
             return (dataChisloCount+" "+dataChislo);
         }
