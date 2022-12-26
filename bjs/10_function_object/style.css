@@ -1,0 +1,14 @@
+.m-0, .col {
+    color: #453037;
+    font-weight: 500;
+}
+.card-body {
+    background-color: #f5dfe7;
+}
+.personalData {
+    font-style: italic;
+}
+
+h3,h4 {
+    padding-bottom: 14px;
+}
